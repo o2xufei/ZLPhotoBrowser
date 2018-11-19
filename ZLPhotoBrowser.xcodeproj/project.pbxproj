@@ -11,6 +11,8 @@
 		9D72A33321A28194009F7AC5 /* SFZLBaseUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A32F21A28194009F7AC5 /* SFZLBaseUIViewController.m */; };
 		9D72A33421A28194009F7AC5 /* SFZLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A33121A28194009F7AC5 /* SFZLBaseViewController.m */; };
 		9D72A33721A28269009F7AC5 /* SFZLUISearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A33621A28269009F7AC5 /* SFZLUISearchBar.m */; };
+		9D72A34321A2A98A009F7AC5 /* Group 5@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D72A34121A2A98A009F7AC5 /* Group 5@3x.png */; };
+		9D72A34421A2A98A009F7AC5 /* Group 5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D72A34221A2A98A009F7AC5 /* Group 5@2x.png */; };
 		FD028BD01CBE33BB009DD2FC /* ZLPhotoActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD028BA11CBE33BB009DD2FC /* ZLPhotoActionSheet.xib */; };
 		FD028BD11CBE33BB009DD2FC /* ZLPhotoBrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD028BA21CBE33BB009DD2FC /* ZLPhotoBrowserCell.xib */; };
 		FD028BD31CBE33BB009DD2FC /* ToastUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FD028BA51CBE33BB009DD2FC /* ToastUtils.m */; };
@@ -65,6 +67,8 @@
 		9D72A33221A28194009F7AC5 /* SFZLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFZLBaseViewController.h; sourceTree = "<group>"; };
 		9D72A33521A28268009F7AC5 /* SFZLUISearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFZLUISearchBar.h; sourceTree = "<group>"; };
 		9D72A33621A28269009F7AC5 /* SFZLUISearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFZLUISearchBar.m; sourceTree = "<group>"; };
+		9D72A34121A2A98A009F7AC5 /* Group 5@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group 5@3x.png"; sourceTree = "<group>"; };
+		9D72A34221A2A98A009F7AC5 /* Group 5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Group 5@2x.png"; sourceTree = "<group>"; };
 		C219308794659F498CBCB00A /* Pods-ZLPhotoBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLPhotoBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZLPhotoBrowser/Pods-ZLPhotoBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		FD028BA11CBE33BB009DD2FC /* ZLPhotoActionSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLPhotoActionSheet.xib; sourceTree = "<group>"; };
 		FD028BA21CBE33BB009DD2FC /* ZLPhotoBrowserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLPhotoBrowserCell.xib; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 		FD07871F1C0D45A200D17B97 /* ZLPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				9D72A34221A2A98A009F7AC5 /* Group 5@2x.png */,
+				9D72A34121A2A98A009F7AC5 /* Group 5@3x.png */,
 				FD0787231C0D45A200D17B97 /* AppDelegate.h */,
 				FD0787241C0D45A200D17B97 /* AppDelegate.m */,
 				FD0787261C0D45A200D17B97 /* ViewController.h */,
@@ -373,7 +379,8 @@
 				TargetAttributes = {
 					FD07871C1C0D45A200D17B97 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 47UY3G7UH6;
+						DevelopmentTeam = L8Y35LFT62;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -409,6 +416,8 @@
 				FD0787301C0D45A200D17B97 /* LaunchScreen.storyboard in Resources */,
 				FD028BD01CBE33BB009DD2FC /* ZLPhotoActionSheet.xib in Resources */,
 				FD07872D1C0D45A200D17B97 /* Assets.xcassets in Resources */,
+				9D72A34321A2A98A009F7AC5 /* Group 5@3x.png in Resources */,
+				9D72A34421A2A98A009F7AC5 /* Group 5@2x.png in Resources */,
 				FD07872B1C0D45A200D17B97 /* Main.storyboard in Resources */,
 				FD028BD11CBE33BB009DD2FC /* ZLPhotoBrowserCell.xib in Resources */,
 			);
@@ -633,12 +642,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
-				DEVELOPMENT_TEAM = 47UY3G7UH6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = L8Y35LFT62;
 				INFOPLIST_FILE = ZLPhotoBrowser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ZL.TTTest;
+				PRODUCT_BUNDLE_IDENTIFIER = RichProductions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = Deve_Rich;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -649,12 +660,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULE_DEBUGGING = NO;
-				DEVELOPMENT_TEAM = 47UY3G7UH6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ZLPhotoBrowser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ZL.TTTest;
+				PRODUCT_BUNDLE_IDENTIFIER = RichProductions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
