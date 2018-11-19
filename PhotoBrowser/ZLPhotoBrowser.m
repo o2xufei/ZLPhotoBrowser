@@ -138,6 +138,7 @@
     self.tableView.tableFooterView = [[UIView alloc] init];
 //    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:GetLocalLanguageTextValue(ZLPhotoBrowserBackText) style:UIBarButtonItemStylePlain target:nil action:nil];
     [self initNavBtn];
+//    [self initNavLeftBtn];
     
     if (@available(iOS 11.0, *)) {
         [self.tableView setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentAlways];
@@ -165,6 +166,7 @@
 {
     ZLPhotoConfiguration *configuration = [(ZLImageNavigationController *)self.navigationController configuration];
     
+//    [self base_createRightNavigationBarButtonItemWithImage:nil orImageUrl:nil orTitle:GetLocalLanguageTextValue(ZLPhotoBrowserCancelText) titleFont:[UIFont systemFontOfSize:16] titleColor:configuration.navTitleColor andAction:@selector(navRightBtn_Click) horizontalOffset:10];
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat width = GetMatchValue(GetLocalLanguageTextValue(ZLPhotoBrowserCancelText), 16, YES, 44);
     btn.frame = CGRectMake(0, 0, width, 44);

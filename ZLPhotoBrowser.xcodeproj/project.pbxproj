@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		809FB34E0364A1AB7740E4D4 /* libPods-ZLPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0927EACC681200867658B044 /* libPods-ZLPhotoBrowser.a */; };
+		9D72A33321A28194009F7AC5 /* SFZLBaseUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A32F21A28194009F7AC5 /* SFZLBaseUIViewController.m */; };
+		9D72A33421A28194009F7AC5 /* SFZLBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A33121A28194009F7AC5 /* SFZLBaseViewController.m */; };
+		9D72A33721A28269009F7AC5 /* SFZLUISearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A33621A28269009F7AC5 /* SFZLUISearchBar.m */; };
+		9D72A33D21A282DB009F7AC5 /* NSString+ZLSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A33C21A282DB009F7AC5 /* NSString+ZLSize.m */; };
+		9D72A34021A28396009F7AC5 /* UIImage+ZLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D72A33F21A28396009F7AC5 /* UIImage+ZLUtils.m */; };
 		FD028BD01CBE33BB009DD2FC /* ZLPhotoActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD028BA11CBE33BB009DD2FC /* ZLPhotoActionSheet.xib */; };
 		FD028BD11CBE33BB009DD2FC /* ZLPhotoBrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD028BA21CBE33BB009DD2FC /* ZLPhotoBrowserCell.xib */; };
 		FD028BD31CBE33BB009DD2FC /* ToastUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FD028BA51CBE33BB009DD2FC /* ToastUtils.m */; };
@@ -56,6 +61,16 @@
 /* Begin PBXFileReference section */
 		0927EACC681200867658B044 /* libPods-ZLPhotoBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZLPhotoBrowser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		562538332CF28C3D81959D16 /* Pods-ZLPhotoBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLPhotoBrowser.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZLPhotoBrowser/Pods-ZLPhotoBrowser.release.xcconfig"; sourceTree = "<group>"; };
+		9D72A32F21A28194009F7AC5 /* SFZLBaseUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFZLBaseUIViewController.m; sourceTree = "<group>"; };
+		9D72A33021A28194009F7AC5 /* SFZLBaseUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFZLBaseUIViewController.h; sourceTree = "<group>"; };
+		9D72A33121A28194009F7AC5 /* SFZLBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFZLBaseViewController.m; sourceTree = "<group>"; };
+		9D72A33221A28194009F7AC5 /* SFZLBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFZLBaseViewController.h; sourceTree = "<group>"; };
+		9D72A33521A28268009F7AC5 /* SFZLUISearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFZLUISearchBar.h; sourceTree = "<group>"; };
+		9D72A33621A28269009F7AC5 /* SFZLUISearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFZLUISearchBar.m; sourceTree = "<group>"; };
+		9D72A33B21A282DB009F7AC5 /* NSString+ZLSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZLSize.h"; sourceTree = "<group>"; };
+		9D72A33C21A282DB009F7AC5 /* NSString+ZLSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZLSize.m"; sourceTree = "<group>"; };
+		9D72A33E21A28396009F7AC5 /* UIImage+ZLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZLUtils.h"; sourceTree = "<group>"; };
+		9D72A33F21A28396009F7AC5 /* UIImage+ZLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZLUtils.m"; sourceTree = "<group>"; };
 		C219308794659F498CBCB00A /* Pods-ZLPhotoBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLPhotoBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZLPhotoBrowser/Pods-ZLPhotoBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		FD028BA11CBE33BB009DD2FC /* ZLPhotoActionSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLPhotoActionSheet.xib; sourceTree = "<group>"; };
 		FD028BA21CBE33BB009DD2FC /* ZLPhotoBrowserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLPhotoBrowserCell.xib; sourceTree = "<group>"; };
@@ -154,6 +169,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D72A32E21A28182009F7AC5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9D72A33E21A28396009F7AC5 /* UIImage+ZLUtils.h */,
+				9D72A33F21A28396009F7AC5 /* UIImage+ZLUtils.m */,
+				9D72A33B21A282DB009F7AC5 /* NSString+ZLSize.h */,
+				9D72A33C21A282DB009F7AC5 /* NSString+ZLSize.m */,
+				9D72A33521A28268009F7AC5 /* SFZLUISearchBar.h */,
+				9D72A33621A28269009F7AC5 /* SFZLUISearchBar.m */,
+				9D72A33021A28194009F7AC5 /* SFZLBaseUIViewController.h */,
+				9D72A32F21A28194009F7AC5 /* SFZLBaseUIViewController.m */,
+				9D72A33221A28194009F7AC5 /* SFZLBaseViewController.h */,
+				9D72A33121A28194009F7AC5 /* SFZLBaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		F92C6AFB9001EFD3C70E0116 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +198,7 @@
 		FD028B8E1CBE33BB009DD2FC /* PhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				9D72A32E21A28182009F7AC5 /* Base */,
 				FD028B8F1CBE33BB009DD2FC /* resource */,
 				FD2CC6BF209DCA8B00F4E6C7 /* ZLImageEditTools */,
 				FD1DA94721205D6E00D3FD64 /* Animation */,
@@ -446,11 +479,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDD979E61EF8F35700DD9DA4 /* ZLForceTouchPreviewController.m in Sources */,
+				9D72A33D21A282DB009F7AC5 /* NSString+ZLSize.m in Sources */,
 				FD7003DF1FBD2EAB000D9FD4 /* ZLPhotoConfiguration.m in Sources */,
 				FD05D82420A3312200F60A2F /* ZLBrushBoardImageView.m in Sources */,
 				FD028BD31CBE33BB009DD2FC /* ToastUtils.m in Sources */,
 				FD028BD51CBE33BB009DD2FC /* ZLBigImageCell.m in Sources */,
 				FD0787281C0D45A200D17B97 /* ViewController.m in Sources */,
+				9D72A33721A28269009F7AC5 /* SFZLUISearchBar.m in Sources */,
 				FD0EB291209EC3F4002F08F4 /* ZLFilterTool.m in Sources */,
 				FD2CC6C2209DCA9E00F4E6C7 /* ZLImageEditTool.m in Sources */,
 				FD7B52731EFCB81600FB9087 /* ZLEditViewController.m in Sources */,
@@ -473,13 +508,16 @@
 				FD028BDC1CBE33BB009DD2FC /* ZLProgressHUD.m in Sources */,
 				FD028BD81CBE33BB009DD2FC /* ZLPhotoActionSheet.m in Sources */,
 				FD028BDE1CBE33BB009DD2FC /* ZLShowBigImgViewController.m in Sources */,
+				9D72A33321A28194009F7AC5 /* SFZLBaseUIViewController.m in Sources */,
 				FD0EB294209F51FD002F08F4 /* ZLClipItem.m in Sources */,
 				FD22D7221E9E2EDC008FCC4E /* ZLPhotoManager.m in Sources */,
 				FDDB9EBA1E6D2EF6008ED9F1 /* YYWeakProxy.m in Sources */,
 				FDC48B7F1FB5587C002815C8 /* ZLCustomCamera.m in Sources */,
 				FD028BDA1CBE33BB009DD2FC /* ZLPhotoBrowserCell.m in Sources */,
 				FD10CECE1EA86AF60041095C /* ZLCollectionCell.m in Sources */,
+				9D72A33421A28194009F7AC5 /* SFZLBaseViewController.m in Sources */,
 				FD1DA95021205EAB00D3FD64 /* ZLInteractiveTrasition.m in Sources */,
+				9D72A34021A28396009F7AC5 /* UIImage+ZLUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

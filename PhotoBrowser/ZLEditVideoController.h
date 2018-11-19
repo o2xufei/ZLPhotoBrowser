@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SFZLBaseUIViewController.h"
 
 @class ZLPhotoModel;
 
-@interface ZLEditVideoController : UIViewController
+@interface ZLEditVideoController : SFZLBaseUIViewController
 
 @property (nonatomic, strong) ZLPhotoModel *model;
 

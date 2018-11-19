@@ -394,16 +394,24 @@ typedef NS_ENUM(NSUInteger, SlideSelectType) {
 {
     ZLImageNavigationController *nav = (ZLImageNavigationController *)self.navigationController;
     ZLPhotoConfiguration *configuration = nav.configuration;
-    nav.viewControllers.firstObject.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:GetLocalLanguageTextValue(ZLPhotoBrowserBackText) style:UIBarButtonItemStylePlain target:nil action:nil];
+//    nav.viewControllers.firstObject.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:GetLocalLanguageTextValue(ZLPhotoBrowserBackText) style:UIBarButtonItemStylePlain target:nil action:nil];
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGFloat width = GetMatchValue(GetLocalLanguageTextValue(ZLPhotoBrowserCancelText), 16, YES, 44);
-    btn.frame = CGRectMake(0, 0, width, 44);
-    btn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [btn setTitle:GetLocalLanguageTextValue(ZLPhotoBrowserCancelText) forState:UIControlStateNormal];
-    [btn setTitleColor:configuration.navTitleColor forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(navRightBtn_Click) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
+    [self base_createRightNavigationBarButtonItemWithImage:nil orImageUrl:nil orTitle:GetLocalLanguageTextValue(ZLPhotoBrowserCancelText) titleFont:[UIFont systemFontOfSize:16] titleColor:configuration.navTitleColor andAction:@selector(navRightBtn_Click) horizontalOffset:0];
+    
+    NSString *name = @"zl_navBack";
+    NSArray *names = [[NSUserDefaults standardUserDefaults] valueForKey:ZLCustomImageNames];
+    if (![names containsObject:name]) {
+        name = kZLPhotoBrowserSrcName(name) ? : kZLPhotoBrowserFrameworkSrcName(name);
+    }
+    [self base_createLeftNavigationBarButtonItemWithImageName:name orImageUrl:nil orTitle:nil titleFont:nil titleColor:nil andAction:@selector(navLeftBtn_Click) horizontalOffset:-10];
+//    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    CGFloat width = GetMatchValue(GetLocalLanguageTextValue(ZLPhotoBrowserCancelText), 16, YES, 44);
+//    btn.frame = CGRectMake(0, 0, width, 44);
+//    btn.titleLabel.font = [UIFont systemFontOfSize:16];
+//    [btn setTitle:GetLocalLanguageTextValue(ZLPhotoBrowserCancelText) forState:UIControlStateNormal];
+//    [btn setTitleColor:configuration.navTitleColor forState:UIControlStateNormal];
+//    [btn addTarget:self action:@selector(navRightBtn_Click) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
 }
 
 #pragma mark - UIButton Action

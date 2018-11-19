@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SFZLBaseUIViewController.h"
+
 @class ZLAlbumListModel;
 
-@interface ZLThumbnailViewController : UIViewController
+@interface ZLThumbnailViewController : SFZLBaseUIViewController
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIView *bottomView;

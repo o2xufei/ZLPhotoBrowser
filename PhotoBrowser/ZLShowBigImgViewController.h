@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
+#import "SFZLBaseUIViewController.h"
 
 @class ZLPhotoModel;
 
-@interface ZLShowBigImgViewController : UIViewController
+@interface ZLShowBigImgViewController : SFZLBaseUIViewController
 {
     @public
     //自定义导航视图
