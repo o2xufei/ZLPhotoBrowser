@@ -23,8 +23,7 @@
  */
 
 #import "SFZLBaseUIViewController.h"
-#import "NSString+ZLSize.h"
-#import "UIImage+ZLUtils.h"
+//#import "NSString+ZLSize.h"
 #import "SDWebImage/UIButton+WebCache.h"
 
 //判断机型
@@ -104,7 +103,7 @@
 //    self.navigationController.navigationBar.barTintColor = color;
     
     //去除导航栏下方的横线并设置颜色
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:color]
+    [self.navigationController.navigationBar setBackgroundImage:[self imageWithColor:color size:CGSizeMake(1.0, 1.0)]
                 forBarPosition:UIBarPositionAny
                     barMetrics:UIBarMetricsDefault];
 }
@@ -128,7 +127,7 @@
     }
     _navigationTitleLabel = [[UILabel alloc] init];
     _navigationTitleLabel.numberOfLines = 1;
-    CGSize titleSize = [NSString getTextSize:title font:font];
+    CGSize titleSize = [self getTextSize:title withFont:font];
     _navigationTitleLabel.frame = CGRectMake(0, 0, titleSize.width, 44.0);  //44.0
     _navigationTitleLabel.backgroundColor = [UIColor clearColor];
     _navigationTitleLabel.font = font;//[UIFont fontWithName:@"HiraginoSansGB-W3" size:FontSizeOf36];
@@ -310,7 +309,7 @@
             [button setTitle:title forState:UIControlStateNormal];//设置UIButton文字
             [button.titleLabel setFont:titleFont]; //设置UIButton字体和大小
             [button setTitleColor:titleColor forState:UIControlStateNormal];  //设置普通状态下UIButton标题颜色
-            CGSize titleSize = [NSString getTextSize:title font:titleFont];
+            CGSize titleSize = [self getTextSize:title withFont:titleFont];
             titleWidth = titleSize.width;
         }
         [button setFrame:CGRectMake(0, 0, image.size.width+fixTouchWidth+titleWidth+widthPlus, 44)];//image.size.width
@@ -332,7 +331,7 @@
             [button setTitle:title forState:UIControlStateNormal];//设置UIButton文字
             [button.titleLabel setFont:titleFont]; //设置UIButton字体和大小
             [button setTitleColor:titleColor forState:UIControlStateNormal];  //设置普通状态下UIButton标题颜色
-            CGSize titleSize = [NSString getTextSize:title font:titleFont];
+            CGSize titleSize = [self getTextSize:title withFont:titleFont];
             titleWidth = titleSize.width;
         }
         [button setFrame:CGRectMake(0, 0, image.size.width+fixTouchWidth+titleWidth+widthPlus, 44)];//image.size.width
@@ -348,7 +347,7 @@
         //没有图片信息，显示文字
         [button setTitle:title forState:UIControlStateNormal];//设置UIButton文字
         [button.titleLabel setFont:titleFont]; //设置UIButton字体和大小
-        CGSize titleSize = [NSString getTextSize:title font:titleFont];
+        CGSize titleSize = [self getTextSize:title withFont:titleFont];
         [button setFrame:CGRectMake(0, 0, titleSize.width+widthPlus, 44)];
         [button setTitleColor:titleColor forState:UIControlStateNormal];  //设置普通状态下UIButton标题颜色
     }else{
@@ -466,6 +465,61 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+    
+//改变图片颜色
+- (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
+{
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, color.CGColor);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+    
+//根据文字、字体、显示宽度、显示高度、截断方式、行间距计算大小
+- (CGSize)getTextSize:(NSString *)text font:(UIFont *)font maxWidth:(float)maxWidth maxHeight:(float)maxHeight andLineBreakMode:(NSLineBreakMode)lineBreakMode andLineSpacing:(float)lineSpacing{
+    CGSize maxSize = CGSizeMake(maxWidth == 0 ? MAXFLOAT : maxWidth,maxHeight == 0 ? MAXFLOAT : maxHeight);
+    CGSize singleLineSize = CGSizeZero;
+    //由于文字中有换行符无法准确计算高度，所以遇到换行符主动加一行高度
+    //    //由于直接使用(boundingRectWithSize:options:attributes:context:)方法无法计算出带有换行符的高度，所以采用UITextView来计算高度
+    //    UITextView *ysTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, maxWidth, 10)];
+    //    ysTextView.text = text;
+    //    // 可以将标签 ，进行转换
+    //    ysTextView.font = font;;
+    //    singleLineSize = [ysTextView sizeThatFits:maxSize];
+    //    return singleLineSize;
+    
+    //如果当前版本高于或等于7.0，则NSString有(boundingRectWithSize:options:attributes:context:)方法，直接使用此方法计算文字尺寸
+    if ([@"" respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
+        // 多行必需使用NSStringDrawingUsesLineFragmentOrigin，网上有人说不是用NSStringDrawingUsesFontLeading计算结果不对
+        NSStringDrawingOptions opts = NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading;
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        [style setLineBreakMode:lineBreakMode];
+        if (lineSpacing != NSNotFound) {
+            [style setLineSpacing:lineSpacing];
+        }
+        NSDictionary *attributes = @{ NSFontAttributeName:font, NSParagraphStyleAttributeName:style};
+        CGRect singleLineRect = [text boundingRectWithSize:maxSize options:opts attributes:attributes context:nil];
+        singleLineSize = singleLineRect.size;
+    }else{
+        //如果没有则说明版本低于7.0，则使用(sizeWithFont:constrainedToSize:lineBreakMode:)方法计算文字尺寸
+        if ([@"" respondsToSelector:@selector(sizeWithFont:constrainedToSize:lineBreakMode:)]) {
+            singleLineSize =[text sizeWithFont:font constrainedToSize:maxSize lineBreakMode:NSLineBreakByCharWrapping];
+        }
+    }
+    return singleLineSize;
+}
+    
+- (CGSize)getTextSize:(NSString *)text withFont:(UIFont *)font{
+    return [self getTextSize:text withFont:font andMaxWidth:0 andMaxHeight:0];
+}
+    
+- (CGSize)getTextSize:(NSString *)text withFont:(UIFont *)font andMaxWidth:(float)maxWidth andMaxHeight:(float)maxHeight{
+    return [self getTextSize:text font:font maxWidth:maxWidth maxHeight:maxHeight andLineBreakMode:NSLineBreakByCharWrapping andLineSpacing:NSNotFound];
 }
 
 /*

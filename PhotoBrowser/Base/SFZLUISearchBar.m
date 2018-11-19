@@ -38,7 +38,7 @@
  */
 
 #import "SFZLUISearchBar.h"
-#import "NSString+ZLSize.h"
+//#import "NSString+ZLSize.h"
 
 //图片与占位符间间隙
 const static float kSFIconSpacing = 10.0;
@@ -155,11 +155,53 @@ const static float kSFDefaultIconMarginLeft = 10;
 // 计算placeholder、icon、icon和placeholder间距的总宽度
 - (CGFloat)calculatePlaceholderWidthWithFont:(UIFont *)font{
     if (!_placeholderWidth) {
-        CGSize size = [NSString getTextSize:self.placeholder font:font maxWidth:MAXFLOAT maxHeight:MAXFLOAT];
+        CGSize size = [self getTextSize:self.placeholder withFont:font andMaxWidth:MAXFLOAT andMaxHeight:MAXFLOAT];
 //        CGSize size = [self.placeholder boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:_placeholderFont} context:nil].size;
         _placeholderWidth = size.width + kSFIconSpacing + _searchIconWidth;
     }
     return _placeholderWidth;
+}
+    
+//根据文字、字体、显示宽度、显示高度、截断方式、行间距计算大小
+- (CGSize)getTextSize:(NSString *)text font:(UIFont *)font maxWidth:(float)maxWidth maxHeight:(float)maxHeight andLineBreakMode:(NSLineBreakMode)lineBreakMode andLineSpacing:(float)lineSpacing{
+    CGSize maxSize = CGSizeMake(maxWidth == 0 ? MAXFLOAT : maxWidth,maxHeight == 0 ? MAXFLOAT : maxHeight);
+    CGSize singleLineSize = CGSizeZero;
+    //由于文字中有换行符无法准确计算高度，所以遇到换行符主动加一行高度
+    //    //由于直接使用(boundingRectWithSize:options:attributes:context:)方法无法计算出带有换行符的高度，所以采用UITextView来计算高度
+    //    UITextView *ysTextView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, maxWidth, 10)];
+    //    ysTextView.text = text;
+    //    // 可以将标签 ，进行转换
+    //    ysTextView.font = font;;
+    //    singleLineSize = [ysTextView sizeThatFits:maxSize];
+    //    return singleLineSize;
+    
+    //如果当前版本高于或等于7.0，则NSString有(boundingRectWithSize:options:attributes:context:)方法，直接使用此方法计算文字尺寸
+    if ([@"" respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
+        // 多行必需使用NSStringDrawingUsesLineFragmentOrigin，网上有人说不是用NSStringDrawingUsesFontLeading计算结果不对
+        NSStringDrawingOptions opts = NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading;
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        [style setLineBreakMode:lineBreakMode];
+        if (lineSpacing != NSNotFound) {
+            [style setLineSpacing:lineSpacing];
+        }
+        NSDictionary *attributes = @{ NSFontAttributeName:font, NSParagraphStyleAttributeName:style};
+        CGRect singleLineRect = [text boundingRectWithSize:maxSize options:opts attributes:attributes context:nil];
+        singleLineSize = singleLineRect.size;
+    }else{
+        //如果没有则说明版本低于7.0，则使用(sizeWithFont:constrainedToSize:lineBreakMode:)方法计算文字尺寸
+        if ([@"" respondsToSelector:@selector(sizeWithFont:constrainedToSize:lineBreakMode:)]) {
+            singleLineSize =[text sizeWithFont:font constrainedToSize:maxSize lineBreakMode:NSLineBreakByCharWrapping];
+        }
+    }
+    return singleLineSize;
+}
+    
+- (CGSize)getTextSize:(NSString *)text withFont:(UIFont *)font{
+    return [self getTextSize:text withFont:font andMaxWidth:0 andMaxHeight:0];
+}
+    
+- (CGSize)getTextSize:(NSString *)text withFont:(UIFont *)font andMaxWidth:(float)maxWidth andMaxHeight:(float)maxHeight{
+    return [self getTextSize:text font:font maxWidth:maxWidth maxHeight:maxHeight andLineBreakMode:NSLineBreakByCharWrapping andLineSpacing:NSNotFound];
 }
 
 /*
