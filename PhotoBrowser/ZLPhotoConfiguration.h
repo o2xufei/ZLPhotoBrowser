@@ -169,9 +169,24 @@
 @property (nonatomic, strong) UIColor *navBarColor;
 
 /**
+ 导航条颜色，默认 rgb(19, 153, 231)
+ */
+@property (nonatomic, strong) UIImage *navBarImage;
+
+/**
  导航标题颜色，默认 rgb(255, 255, 255)
  */
 @property (nonatomic, strong) UIColor *navTitleColor;
+
+/**
+ 导航左侧按钮与左边间距
+ */
+@property (nonatomic, assign) float navLeftItemToLeftWidth;
+
+/**
+ 导航右侧按钮与右边间距
+ */
+@property (nonatomic, assign) float navRightItemToRightWidth;
 
 /**
  底部工具条底色，默认 rgb(255, 255, 255)
