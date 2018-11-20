@@ -201,7 +201,8 @@
     ZLPhotoConfiguration *configuration = [(ZLImageNavigationController *)self.navigationController configuration];
     
     _navView = [[UIView alloc] init];
-    _navView.backgroundColor = [configuration.navBarColor colorWithAlphaComponent:.9];
+    UIColor *backgroundColor = configuration.navBarImage ? [UIColor colorWithPatternImage:configuration.navBarImage] : configuration.navBarColor;
+    _navView.backgroundColor = [backgroundColor colorWithAlphaComponent:0.9f];
     [self.view addSubview:_navView];
     
     _btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
