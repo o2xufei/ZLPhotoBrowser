@@ -818,6 +818,7 @@ double const ScalePhotoWidth = 1000;
     ZLImageNavigationController *nav = [self getImageNavWithRootVC:photoBrowser];
     ZLThumbnailViewController *tvc = [[ZLThumbnailViewController alloc] init];
     [nav pushViewController:tvc animated:YES];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.sender showDetailViewController:nav sender:nil];
 }
 

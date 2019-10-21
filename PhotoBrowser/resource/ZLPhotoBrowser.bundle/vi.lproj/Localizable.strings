@@ -1,19 +1,19 @@
 "ZLPhotoBrowserCameraText" = "Camera";
 "ZLPhotoBrowserCameraRecordText" = "Record";
 "ZLPhotoBrowserAblumText" = "Album";
-"ZLPhotoBrowserCancelText" = "Cancel";
+"ZLPhotoBrowserCancelText" = "Hủy";
 
-"ZLPhotoBrowserOriginalText" = "Original";
-"ZLPhotoBrowserDoneText" = "Done";
+"ZLPhotoBrowserOriginalText" = "Nguyên bản";
+"ZLPhotoBrowserDoneText" = "Hoàn tất";
 "ZLPhotoBrowserOKText" = "OK";
 
 "ZLPhotoBrowserBackText" = "Back";
 
-"ZLPhotoBrowserEditText" = "Edit";
+"ZLPhotoBrowserEditText" = "Chỉnh sửa";
 "ZLPhotoBrowserSaveText" = "Save";
 
 "ZLPhotoBrowserPhotoText" = "Photos";
-"ZLPhotoBrowserPreviewText" = "Preview";
+"ZLPhotoBrowserPreviewText" = "Xem trước";
 "ZLPhotoBrowserGifPreviewText" = "GIF preview";
 "ZLPhotoBrowserVideoPreviewText" = "Video preview";
 "ZLPhotoBrowserLivePhotoPreviewText" = "Live Photo preview";
@@ -41,7 +41,7 @@
 "ZLPhotoBrowserSaveVideoFailed" = "Failed to save the video";
 
 
-"ZLPhotoBrowserCameraRoll" = "Camera Roll";
+"ZLPhotoBrowserCameraRoll" = "Camera cuộn";
 "ZLPhotoBrowserPanoramas" = "Panoramas";
 "ZLPhotoBrowserVideos" = "Videos";
 "ZLPhotoBrowserFavorites" = "Favorites";

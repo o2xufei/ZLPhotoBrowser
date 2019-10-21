@@ -276,7 +276,11 @@
     float widthPlus = horizontalOffset;
     float realHorizontalOffset = horizontalOffset;
     //根据版本来设置缩进
-    if (@available(iOS 11, *)) {
+    if (@available(iOS 13, *)) {
+        //如果版本为iOS13或以上
+        realHorizontalOffset = realHorizontalOffset - 20;
+        widthPlus = widthPlus-20 < 0 ? 0 : widthPlus-20;
+    }else if (@available(iOS 11, *)) {
         //如果版本为IOS11或以上
         if (realHorizontalOffset != 0) {
             //修复右按钮偏移不为0时错误，修复左按钮偏移大于0且小于10时错误(修复无效)
