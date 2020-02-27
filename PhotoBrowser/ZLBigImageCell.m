@@ -479,7 +479,7 @@
     } else {
         [self.indicator startAnimating];
         zl_weakify(self);
-        [self.imageView sd_setImageWithURL:obj placeholderImage:nil options:SDWebImageProgressiveDownload completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        [self.imageView sd_setImageWithURL:obj placeholderImage:nil options:SDWebImageProgressiveLoad completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             zl_strongify(weakSelf);
             [strongSelf.indicator stopAnimating];
             if (error) {

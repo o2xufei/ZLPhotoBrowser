@@ -63,15 +63,39 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //显示导航栏
-//    self.navigationController.navigationBar.hidden = NO;
-//    [self setNavigationBarBackgroundImage:[UIImage getGradientImageWithRectSize:CGSizeMake(SCREEN_WIDTH, NAVIGATION_BAR_HEIGHT) andFirstColor:ORANGE_COLOR.CGColor andSecondColor:RED_LIGHT_COLOR.CGColor andThirdColor:RED_COLOR.CGColor]];
-//    [self setNavigationBarTintColor:RED_COLOR];
-//    [self setNavigationBottomLine:[UIImage imageWithColor:BlackColorLine]];
-    //设置状态栏背景色
-    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
-        statusBar.backgroundColor = [UIColor clearColor];
+    if (@available(iOS 13.0, *)) {
+        UIView *_customStatusBar = nil;
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        for (UIView *subView in keyWindow.subviews) {
+            if (subView.tag == 109090909) {
+                _customStatusBar = subView;
+            }
+        }
+        
+        UIColor *color = nil;
+        if (color) {//有颜色
+            if (_customStatusBar) {//已经有自定义的StatusBar，那就直接设置颜色
+                _customStatusBar.backgroundColor = color;
+            } else {//没有那就添加一个，并且设置颜色
+                UIView *statusBar = [[UIView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.windowScene.statusBarManager.statusBarFrame] ;
+                statusBar.backgroundColor = color;
+                statusBar.tag = 109090909;
+                [[UIApplication sharedApplication].keyWindow addSubview:statusBar];
+            }
+        } else {//没有颜色
+            if (_customStatusBar) {//已经有自定义的StatusBar，那就设置成透明色
+                _customStatusBar.backgroundColor = [UIColor clearColor];
+            } else {//没有就不用管了
+                
+            }
+        }
+
+    } else {
+        //设置状态栏背景色
+        UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+        if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+            statusBar.backgroundColor = [UIColor clearColor];
+        }
     }
 }
 

@@ -84,13 +84,14 @@ typedef NS_ENUM(NSUInteger, SlideSelectType) {
                 zl_weakify(self);
                 [ZLPhotoManager getCameraRollAlbumList:configuration.allowSelectVideo allowSelectImage:configuration.allowSelectImage complete:^(ZLAlbumListModel *album) {
                     zl_strongify(weakSelf);
-                    ZLImageNavigationController *weakNav = (ZLImageNavigationController *)strongSelf.navigationController;
-                    
-                    strongSelf.albumListModel = album;
-                    [ZLPhotoManager markSelectModelInArr:strongSelf.albumListModel.models selArr:weakNav.arrSelectedModels];
-                    strongSelf.arrDataSources = [NSMutableArray arrayWithArray:strongSelf.albumListModel.models];
-                    [hud hide];
                     dispatch_async(dispatch_get_main_queue(), ^{
+                        ZLImageNavigationController *weakNav = (ZLImageNavigationController *)strongSelf.navigationController;
+                        
+                        strongSelf.albumListModel = album;
+                        [ZLPhotoManager markSelectModelInArr:strongSelf.albumListModel.models selArr:weakNav.arrSelectedModels];
+                        strongSelf.arrDataSources = [NSMutableArray arrayWithArray:strongSelf.albumListModel.models];
+                        [hud hide];
+                        
                         if (configuration.allowTakePhotoInLibrary && (configuration.allowSelectImage || configuration.allowRecordVideo)) {
                             strongSelf.allowTakePhoto = YES;
                         }
@@ -928,39 +929,40 @@ typedef NS_ENUM(NSUInteger, SlideSelectType) {
 
 - (void)handleDataArray:(ZLPhotoModel *)model
 {
-    ZLImageNavigationController *nav = (ZLImageNavigationController *)self.navigationController;
-    ZLPhotoConfiguration *configuration = nav.configuration;
-    
-    BOOL (^shouldSelect)(void) = ^BOOL() {
-        if (model.type == ZLAssetMediaTypeVideo) {
-            return (model.asset.duration <= configuration.maxVideoDuration);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        ZLImageNavigationController *nav = (ZLImageNavigationController *)self.navigationController;
+        ZLPhotoConfiguration *configuration = nav.configuration;
+        BOOL (^shouldSelect)(void) = ^BOOL() {
+            if (model.type == ZLAssetMediaTypeVideo) {
+                return (model.asset.duration <= configuration.maxVideoDuration);
+            }
+            return YES;
+        };
+        
+        if (configuration.sortAscending) {
+            [self.arrDataSources addObject:model];
+        } else {
+            [self.arrDataSources insertObject:model atIndex:0];
         }
-        return YES;
-    };
-    
-    if (configuration.sortAscending) {
-        [self.arrDataSources addObject:model];
-    } else {
-        [self.arrDataSources insertObject:model atIndex:0];
-    }
-    
-    BOOL sel = shouldSelect();
-    if (configuration.maxSelectCount > 1 && nav.arrSelectedModels.count < configuration.maxSelectCount && sel) {
-        model.selected = sel;
-        [nav.arrSelectedModels addObject:model];
-    } else if (configuration.maxSelectCount == 1 && !nav.arrSelectedModels.count && sel) {
-        if (![self shouldDirectEdit:model]) {
+        
+        BOOL sel = shouldSelect();
+        if (configuration.maxSelectCount > 1 && nav.arrSelectedModels.count < configuration.maxSelectCount && sel) {
             model.selected = sel;
             [nav.arrSelectedModels addObject:model];
-            [self btnDone_Click:nil];
-            return;
+        } else if (configuration.maxSelectCount == 1 && !nav.arrSelectedModels.count && sel) {
+            if (![self shouldDirectEdit:model]) {
+                model.selected = sel;
+                [nav.arrSelectedModels addObject:model];
+                [self btnDone_Click:nil];
+                return;
+            }
         }
-    }
-    
-    self.albumListModel = [ZLPhotoManager getCameraRollAlbumList:configuration.allowSelectVideo allowSelectImage:configuration.allowSelectImage];
-    [self.collectionView reloadData];
-    [self scrollToBottom];
-    [self resetBottomBtnsStatus:YES];
+        
+        self.albumListModel = [ZLPhotoManager getCameraRollAlbumList:configuration.allowSelectVideo allowSelectImage:configuration.allowSelectImage];
+        [self.collectionView reloadData];
+        [self scrollToBottom];
+        [self resetBottomBtnsStatus:YES];
+    });
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

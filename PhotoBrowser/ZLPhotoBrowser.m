@@ -150,15 +150,15 @@
 {
     [super viewWillAppear:animated];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         ZLPhotoConfiguration *configuration = [(ZLImageNavigationController *)self.navigationController configuration];
         zl_weakify(self);
         [ZLPhotoManager getPhotoAblumList:configuration.allowSelectVideo allowSelectImage:configuration.allowSelectImage complete:^(NSArray<ZLAlbumListModel *> *albums) {
             zl_strongify(weakSelf);
             strongSelf.arrayDataSources = [NSMutableArray arrayWithArray:albums];
-            dispatch_async(dispatch_get_main_queue(), ^{
+//            dispatch_async(dispatch_get_main_queue(), ^{
                 [strongSelf.tableView reloadData];
-            });
+//            });
         }];
     });
 }
@@ -239,7 +239,7 @@
     
     ZLThumbnailViewController *tvc = [[ZLThumbnailViewController alloc] init];
     tvc.albumListModel = model;
-    
+    [self.navigationController setModalPresentationStyle:UIModalPresentationFullScreen];
     [self.navigationController showViewController:tvc sender:self];
 }
 
