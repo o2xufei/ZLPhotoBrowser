@@ -95,7 +95,10 @@
         fromView.frame = frame;
         self.shadowView.alpha = 1;
     } completion:^(BOOL finished) {
-        imageVC->_navView.hidden = NO;
+        //修复Crash 2020.3.25
+        if (imageVC && imageVC->_navView) {
+            imageVC->_navView.hidden = NO;
+        }
         [self.shadowView removeFromSuperview];
         [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
     }];
