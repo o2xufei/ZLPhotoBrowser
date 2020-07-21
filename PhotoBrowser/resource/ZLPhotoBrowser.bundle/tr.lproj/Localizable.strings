@@ -1,0 +1,56 @@
+"ZLPhotoBrowserCameraText"="Kamera";
+"ZLPhotoBrowserCameraRecordText"="Kayıt";
+"ZLPhotoBrowserAblumText"="Albüm";
+"ZLPhotoBrowserCancelText"="İptal";
+
+"ZLPhotoBrowserOriginalText"="Orijinal";
+"ZLPhotoBrowserDoneText"="Tamam";
+"ZLPhotoBrowserOKText"="Tamam";
+
+"ZLPhotoBrowserBackText"="Geri";
+
+"ZLPhotoBrowserEditText"="Düzenle";
+"ZLPhotoBrowserSaveText"="Kaydet";
+
+"ZLPhotoBrowserPhotoText"="Fotoğraflar";
+"ZLPhotoBrowserPreviewText"="Ön izleme";
+"ZLPhotoBrowserGifPreviewText"="GIF ön izlemesi";
+"ZLPhotoBrowserVideoPreviewText"="Video ön izlemesi";
+"ZLPhotoBrowserLivePhotoPreviewText"="Canlı Fotoğraf önizleme";
+
+"ZLPhotoBrowserNoPhotoText"="Fotoğraf Yok";
+"ZLPhotoBrowserCannotSelectVideo"="Video seçilemiyor";
+"ZLPhotoBrowserCannotSelectGIF"="GIF resmi seçilemiyor";
+"ZLPhotoBrowserCannotSelectLivePhoto"="Canlı Fotoğraf seçilemiyor";
+
+"ZLPhotoBrowserLoadingText"="yükleniyor lütfen bekleyin";
+"ZLPhotoBrowserHandleText"="Bekleniyor...";
+
+"ZLPhotoBrowserSaveImageErrorText"="Görüntü kaydedilemedi";
+"ZLPhotoBrowserMaxSelectCountText"="Maksimum seçim sayısı:% ld";
+"ZLPhotoBrowserMaxVideoDurationText"="% Lds'den daha uzun süreli video seçilemiyor";
+
+"ZLPhotoBrowserNoCameraAuthorityText"="%@'in cihazınızın albümüne erişimine izin verin \ Ayarlar \"-> \" Gizlilik \"-> \" Kamera";
+"ZLPhotoBrowserNoAblumAuthorityText"="Lütfen %@'in cihazınızın kamerasına erişimine izin verin \ Ayarlar \"-> \" Gizlilik \"-> \" Resimler";
+"ZLPhotoBrowserNoMicrophoneAuthorityText"="%@'in cihazınızın mikrofonuna erişimine izin verin \ Ayarlar \"-> \" Gizlilik \"-> \" Kamera";
+
+"ZLPhotoBrowseriCloudPhotoText"="Fotoğraf albümüne indirdikten sonra tekrar dene";
+"ZLPhotoBrowseriCloudVideoText"="iCloud'dan senkronizasyon yapılamıyor";
+
+"ZLPhotoBrowserLoadNetImageFailed"="yükleme başarısız";
+"ZLPhotoBrowserSaveVideoFailed"="Video kaydedilemedi";
+
+
+"ZLPhotoBrowserCameraRoll"="Film Rulosu";
+"ZLPhotoBrowserPanoramas"="Panoramalar";
+"ZLPhotoBrowserVideos"="Videolar";
+"ZLPhotoBrowserFavorites"="Favoriler";
+"ZLPhotoBrowserTimelapses"="Hızlandırılmış";
+"ZLPhotoBrowserRecentlyAdded"="Son Eklenenler";
+"ZLPhotoBrowserBursts"="Sürekli Çekimler";
+"ZLPhotoBrowserSlomoVideos"="Ağır çekim";
+"ZLPhotoBrowserSelfPortraits"="Selfie'ler";
+"ZLPhotoBrowserScreenshots"="Ekran görüntüleri";
+"ZLPhotoBrowserDepthEffect"="Derinlik Etkisi";
+"ZLPhotoBrowserLivePhotos"="Canlı Fotoğraf";
+"ZLPhotoBrowserAnimated"="Hareketli";
