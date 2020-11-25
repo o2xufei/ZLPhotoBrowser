@@ -499,6 +499,7 @@ double const ScalePhotoWidth = 1000;
             
             picker.mediaTypes = arr;
             picker.videoMaximumDuration = self.configuration.maxRecordDuration;
+            picker.modalPresentationStyle = UIModalPresentationFullScreen;
             [self.sender showDetailViewController:picker sender:nil];
         }
     } else {
@@ -520,6 +521,7 @@ double const ScalePhotoWidth = 1000;
             zl_strongify(weakSelf);
             [strongSelf saveImage:image videoUrl:videoUrl];
         };
+        camera.modalPresentationStyle = UIModalPresentationFullScreen;
         [self.sender showDetailViewController:camera sender:nil];
     }
 }
@@ -771,6 +773,7 @@ double const ScalePhotoWidth = 1000;
 {
     //无相册访问权限
     ZLNoAuthorityViewController *nvc = [[ZLNoAuthorityViewController alloc] init];
+    nvc.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.sender showDetailViewController:[self getImageNavWithRootVC:nvc] sender:nil];
 }
 
@@ -840,7 +843,7 @@ double const ScalePhotoWidth = 1000;
         [strongSelf.collectionView reloadData];
         [strongSelf changeCancelBtnTitle];
     }];
-    
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.sender showDetailViewController:nav sender:nil];
 }
 
@@ -856,8 +859,8 @@ double const ScalePhotoWidth = 1000;
     
     self.preview = NO;
     [self.sender.view addSubview:self];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.sender showDetailViewController:nav sender:nil];
-    
     return svc;
 }
 
@@ -867,6 +870,7 @@ double const ScalePhotoWidth = 1000;
     ZLImageNavigationController *nav = [self getImageNavWithRootVC:vc];
     [nav.arrSelectedModels addObject:model];
     vc.model = model;
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.sender showDetailViewController:nav sender:nil];
 }
 
@@ -876,6 +880,7 @@ double const ScalePhotoWidth = 1000;
     ZLImageNavigationController *nav = [self getImageNavWithRootVC:vc];
     [nav.arrSelectedModels addObject:model];
     vc.model = model;
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.sender showDetailViewController:nav sender:nil];
 }
 

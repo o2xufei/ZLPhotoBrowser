@@ -858,6 +858,7 @@ typedef NS_ENUM(NSUInteger, SlideSelectType) {
             
             picker.mediaTypes = arr;
             picker.videoMaximumDuration = configuration.maxRecordDuration;
+            picker.modalPresentationStyle = UIModalPresentationFullScreen;
             [self showDetailViewController:picker sender:nil];
         }
     } else {
@@ -878,6 +879,7 @@ typedef NS_ENUM(NSUInteger, SlideSelectType) {
             zl_strongify(weakSelf);
             [strongSelf saveImage:image videoUrl:videoUrl];
         };
+        camera.modalPresentationStyle = UIModalPresentationFullScreen;
         [self showDetailViewController:camera sender:nil];
     }
 }

@@ -557,6 +557,7 @@
                                                                     2, 2);
         alert.popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirectionUp;
     }
+    alert.modalPresentationStyle = UIModalPresentationFullScreen;
     [self showDetailViewController:alert sender:nil];
 }
 
